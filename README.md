@@ -26,7 +26,8 @@ This project is a lightweight web application built using **React.js**, **Huggin
 
 ## 🧪 Demo
 
-👉 [Live Demo (if hosted)]([https://your-live-link.com](https://scribidoo.vercel.app/))
+👉 [Live Demo](https://scribidoo.vercel.app/)
+
 
 
 ---
