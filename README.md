@@ -30,7 +30,84 @@ This project is a lightweight web application built using **React.js**, **Huggin
 
 
 ---
+🧩 Web Workers for background processing
 
+🧠 Whisper ASR (openai/whisper-tiny.en) from @xenova/transformers
+
+💬 Streaming transcription results
+
+⏱ Real-time UI updates including partial results and timestamps
+
+💾 Offline capability (runs fully in the browser)
+
+🔧 Key Components
+1. Web Worker (transcribe.worker.js)
+Loads the Whisper model once (singleton pattern).
+
+Receives audio data from the React app.
+
+Uses the pipeline() function to run transcription.
+
+Sends back:
+
+Loading status
+
+Download progress
+
+Partial transcription (as decoding happens)
+
+Final, timestamped results
+
+2. GenerationTracker Class
+Handles streaming transcription:
+
+callbackFunction() → sends partial words.
+
+chunkCallback() → sends full chunks with timestamps.
+
+Aggregates results into a structured format for UI use.
+
+3. MessageTypes (presets.js)
+Shared constants between React and Worker for clean communication:
+
+INFERENCE_REQUEST, LOADING, DOWNLOADING, RESULT, RESULT_PARTIAL, INFERENCE_DONE
+
+4. React Integration (Information.jsx)
+Initializes the worker on mount.
+
+Listens for messages from the worker.
+
+Triggers transcription by sending audio data to the worker.
+
+Displays:
+
+Loading state
+
+Partial results as they stream in
+
+Final result list with timestamps
+
+🎙 Input Support
+The worker accepts:
+
+Blob
+
+ArrayBuffer
+
+Float32Array
+From:
+
+Microphone recordings
+
+Uploaded audio files
+
+🚀 Features
+✅ Full offline transcription
+✅ Real-time streaming of text
+✅ Timestamped results (useful for subtitles)
+✅ Whisper model runs entirely in-browser
+✅ Model loading and download progress shown
+✅ Lightweight and modular
 ## 🛠️ Tech Stack
 
 | Technology       | Usage                             |
